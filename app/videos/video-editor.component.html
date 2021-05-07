@@ -1,0 +1,58 @@
+<form (ngSubmit)="onSubmit(video)" #videoForm="ngForm">
+  <mat-form-field class="full-width">
+    <input matInput name="title" placeholder="Title" [(ngModel)]="video.title">
+  </mat-form-field>
+  <br/>
+  <mat-form-field class="full-width">
+    <textarea matInput name="synopsis" placeholder="Synopsis" [(ngModel)]="video.synopsis"></textarea>
+  </mat-form-field>
+  <br/>
+  <mat-form-field class="full-width">
+    <mat-select placeholder="Categories" [(ngModel)]="video.categories" name="categories" multiple="true">
+      <mat-option
+        *ngFor="let category of categories"
+        [value]="category.id">
+        {{ category.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br/>
+  <label>Abridged Cast</label>
+  <mat-list>
+    <mat-list-item *ngFor="let member of video.abridged_cast">
+      <mat-form-field>
+        <input matInput placeholder="Artist Name" [(ngModel)]="member.name" [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+    </mat-list-item>
+    <mat-list-item>
+      <button (click)="addCast()" mat-mini-fab color="primary"><mat-icon>add</mat-icon></button>
+    </mat-list-item>
+  </mat-list>
+
+  <br/>
+  <mat-form-field class="full-width">
+    <input matInput name="thumbnail400x207" placeholder="Thumbnail 400x207" [(ngModel)]="video.thumbnails['400x207']">
+  </mat-form-field>
+  <br/>
+  <mat-form-field class="full-width">
+    <input matInput name="thumbnail293x293" placeholder="Thumbnail 293x293" [(ngModel)]="video.thumbnails['293x293']">
+  </mat-form-field>
+  <br/>
+  <mat-form-field class="full-width">
+    <input matInput name="thumbnail295x144" placeholder="Thumbnail 295x144" [(ngModel)]="video.thumbnails['295x144']">
+  </mat-form-field>
+  <br/>
+  <mat-form-field class="full-width">
+    <input matInput name="thumbnail640x333" placeholder="Thumbnail 640x333" [(ngModel)]="video.thumbnails['640x333']">
+  </mat-form-field>
+  <br/>
+  <mat-form-field class="full-width">
+    <input matInput name="thumbnail341x307" placeholder="Thumbnail 341x307" [(ngModel)]="video.thumbnails['341x307']">
+  </mat-form-field>
+  <br/>
+  <mat-form-field class="full-width">
+    <input matInput name="download" placeholder="Download URL" [(ngModel)]="video.links.download">
+  </mat-form-field>
+  <br/>
+  <button type="submit" mat-raised-button color="accent" [mat-dialog-close]="true">Save</button>
+</form>

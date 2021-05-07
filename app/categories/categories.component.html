@@ -1,0 +1,19 @@
+<!-- <mat-selection-list #catList>
+	<mat-list-option *ngFor="let category of categories">
+		{{category}}
+	</mat-list-option>
+</mat-selection-list>
+<p>
+	Options selected: {{catList.selectedOptions.selected.length}}
+</p>
+<div id="category-actions">
+<button mat-raised-button color="primary">Add new category</button>
+<button mat-raised-button color="warn">Remove</button>
+</div> -->
+<nav mat-tab-nav-bar>
+	<a mat-tab-link *ngFor="let link of navLinks" [routerLink]="link.path" routerLinkActive #rla="routerLinkActive" [active]="rla.isActive">
+		{{link.label}}
+	</a>
+</nav>
+
+<router-outlet></router-outlet>

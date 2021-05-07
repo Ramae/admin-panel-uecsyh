@@ -1,0 +1,10 @@
+<div mat-dialog-content>
+  <p>What is the name of new category?</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="newCategory">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Add</button>
+</div>

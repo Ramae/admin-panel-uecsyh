@@ -1,0 +1,21 @@
+<mat-table [dataSource]="providedData">
+	<ng-container *ngFor="let column of providedColumns" matColumnDef={{column}}>
+		<mat-header-cell *matHeaderCellDef>{{column}}</mat-header-cell>
+		<mat-cell *matCellDef="let row">{{row[column]}}</mat-cell>
+	</ng-container>
+
+	<ng-container matColumnDef="actions">
+		<mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+		<mat-cell *matCellDef="let cell">
+			<button mat-icon-button>
+      <mat-icon (click)="_onEdit(cell)">mode_edit</mat-icon>
+        </button>
+			<button mat-icon-button>
+      <mat-icon (click)="_onDelete(cell)">delete</mat-icon>
+        </button>
+		</mat-cell>
+	</ng-container>
+
+	<mat-header-row *matHeaderRowDef="allColumns"></mat-header-row>
+	<mat-row *matRowDef="let row; columns: allColumns;"></mat-row>
+</mat-table>
